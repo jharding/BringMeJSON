@@ -1,17 +1,17 @@
-# vertebrae.js
-
-## Introduction
+##vertebrae.js
 
 I wrote vertebrae.js so I'd have a clean way of initializing my backbone.js models/collections.  It is very similar to ICanHaz.js, however instead of grabbing templates, it'll grab embedded JSON.
 
-## How to Use vertebrae.js
+##How to use vertebrae.js
 
-### Step 1: Include vertebrae.js
+###Step 1: Include vertebrae.js
+
 ```html
 <script type='text/javascript' scr='vertebrae.js' />
 ```
 
-### Step 2: Embed your JSON
+###Step 2: Embed your JSON
+
 ```html
 <script id='cities' type='text/vertebrae'>
     [
@@ -29,7 +29,8 @@ I wrote vertebrae.js so I'd have a clean way of initializing my backbone.js mode
 </script>
 ```
 
-### Step 3: Retreive your Data
+###Step 3: Retreive your Data
+
 ```javascript
 var cities = vertebrae.cities;
 ```
