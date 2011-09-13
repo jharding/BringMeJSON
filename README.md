@@ -13,7 +13,7 @@ I wrote vertebrae.js so I'd have a clean way of initializing my backbone.js mode
 
 ### Step 2: Embed your JSON
 ```html
-<script id='cities' type='text/html'>
+<script id='cities' type='text/vertebrae'>
     [
         {
             name: 'Ann Arbor',
