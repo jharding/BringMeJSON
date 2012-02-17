@@ -1,23 +1,38 @@
+//  BringMeJSON (bmj)
+//  (c) 2012 Jake Harding
+//  BringMeJSON may be freely distributed under the MIT license.
+
+/*globals console */
+
 (function($) {
-  function Vertebrae() {
-    var self = this;
+    function BringMeJSON() {
+        var that = this;
+        this.getJSON = function() {
+            $('script[type="application/json"]').each(function() {
+                var script = $(this);
+                var name = script.attr('name');
+                var data = $.trim(script.html());
+
+                try {
+                    that[name] = $.parseJSON(data);
+                }
+                catch (error) {
+                    that[name] = null;
+
+                    if (console) {
+                        console.error('BMJ: The script tag \'' + name + '\' contains invalid JSON.');
+                    }
+                }
+
+                script.remove();
+            });
+        };
+    }
     
-    self.fetchDatasets = function() {
-      $('script[type="text/vertebrae"]').each(function(index, element) {
-        var script = $(element);
-        var data = $.trim(script.html());
+    window.bmj = new BringMeJSON();
 
-        self[script.attr('name')] = JSON.parse(data);
-
-        script.remove();
-      });
-    };
-  }
-
-  window.vertebrae = new Vertebrae();
-
-  $(function() {
-    vertebrae.fetchDatasets();
-  });
+    $(function() {
+        window.bmj.getJSON();
+    });
 
 })(window.jQuery);
