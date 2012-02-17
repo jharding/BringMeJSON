@@ -1,36 +1,37 @@
-##vertebrae.js
+#BringMeJSON
 
-I wrote vertebrae.js so I'd have a clean way of initializing my backbone.js models/collections.  It is very similar to ICanHaz.js, however instead of grabbing templates, it'll grab embedded JSON.
+##What does it do?
+Sometime client-side code needs to access JSON on a page load for bootstrapping purposes. BringMeJSON provides an easy way of doing just that.
 
-##How to use vertebrae.js
-
-###Step 1: Include vertebrae.js
+##How to use BringMeJSON
+###Step 1: Load BringMeJSON
 
 ```html
-<script type='text/javascript' scr='vertebrae.js' />
+<script type='text/javascript' scr='bmj.js'></script>
 ```
 
 ###Step 2: Embed your JSON
 
 ```html
-<script id='cities' type='text/vertebrae'>
-    [
-        {
-            name: 'Ann Arbor',
-            state: 'MI',
-            population: 113934
-        },
-        {
-            name: 'San Jose',
-            state: 'CA',
-            population: 945942
-        }
-    ]
+<script name='cities' type='application/json'>
+{
+    "Ann Arbor": {
+        "state": "MI",
+        "yearFounded": "1824",
+        "population": 113934
+    },
+    "San Jose": {
+        "state": "CA",
+        "yearFounded": "1777",
+        "population": 945942
+    }
+}
 </script>
 ```
 
-###Step 3: Retreive your Data
+###Step 3: Access your JSON
 
 ```javascript
-var cities = vertebrae.cities;
+var cities = bmj.cities;
+console.log('Ann Arbor was founded in ' + cities['Ann Arbor'].yearFounded + '.');
 ```
